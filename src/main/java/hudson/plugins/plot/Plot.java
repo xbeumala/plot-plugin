@@ -5,30 +5,14 @@
 
 package hudson.plugins.plot;
 
+import au.com.bytecode.opencsv.CSVReader;
+import au.com.bytecode.opencsv.CSVWriter;
 import hudson.model.AbstractBuild;
 import hudson.model.AbstractProject;
 import hudson.model.Build;
-import hudson.model.Project;
 import hudson.model.Run;
 import hudson.util.ChartUtil;
 import hudson.util.ShiftedCategoryAxis;
-
-import java.awt.BasicStroke;
-import java.awt.Color;
-import java.awt.Polygon;
-import java.awt.Shape;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintStream;
-import java.text.NumberFormat;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Random;
-import java.util.logging.Logger;
-
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartRenderingInfo;
 import org.jfree.chart.ChartUtilities;
@@ -46,8 +30,14 @@ import org.kohsuke.stapler.DataBoundConstructor;
 import org.kohsuke.stapler.StaplerRequest;
 import org.kohsuke.stapler.StaplerResponse;
 
-import au.com.bytecode.opencsv.CSVReader;
-import au.com.bytecode.opencsv.CSVWriter;
+import java.awt.*;
+import java.io.*;
+import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Random;
+import java.util.logging.Logger;
 
 /**
  * Represents the configuration for a single plot.  A plot can
@@ -371,7 +361,7 @@ public class Plot implements Comparable {
      * 
      * @param project the project
      */
-    public void setProject(Project project) {
+    public void setProject(AbstractProject project) {
         this.project = project;
     }
     

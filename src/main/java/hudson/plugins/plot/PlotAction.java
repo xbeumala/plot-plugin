@@ -4,15 +4,14 @@
  */
 package hudson.plugins.plot;
 
+import hudson.model.AbstractProject;
 import hudson.model.Action;
-import hudson.model.Project;
-
-import java.io.IOException;
-import java.util.logging.Logger;
-
 import org.kohsuke.stapler.StaplerProxy;
 import org.kohsuke.stapler.StaplerRequest;
 import org.kohsuke.stapler.StaplerResponse;
+
+import java.io.IOException;
+import java.util.logging.Logger;
 
 /**
  * Project action to display plots.
@@ -22,15 +21,15 @@ import org.kohsuke.stapler.StaplerResponse;
 public class PlotAction implements Action, StaplerProxy {
 
     private static final Logger LOGGER = Logger.getLogger(PlotAction.class.getName());
-    private final Project project;
+    private final AbstractProject project;
     private final PlotPublisher publisher;
 
-    public PlotAction(Project project, PlotPublisher publisher) {
+    public PlotAction(AbstractProject project, PlotPublisher publisher) {
         this.project = project;
         this.publisher = publisher;
     }
 
-    public Project getProject() {
+    public AbstractProject getProject() {
         return project;
     }
 

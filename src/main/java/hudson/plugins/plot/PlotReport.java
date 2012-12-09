@@ -4,20 +4,18 @@
  */
 package hudson.plugins.plot;
 
-import hudson.model.Project;
+import au.com.bytecode.opencsv.CSVReader;
+import hudson.model.AbstractProject;
+import org.kohsuke.stapler.StaplerRequest;
+import org.kohsuke.stapler.StaplerResponse;
 
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.ArrayList;
-
-import org.kohsuke.stapler.StaplerRequest;
-import org.kohsuke.stapler.StaplerResponse;
-
-import au.com.bytecode.opencsv.CSVReader;
 
 /**
  * Represents a plot report for a single group of plots.
@@ -27,7 +25,7 @@ import au.com.bytecode.opencsv.CSVReader;
 public class PlotReport {
 	private static final Logger LOGGER = Logger.getLogger(PlotReport.class.getName());
 	
-    private final Project project;
+    private final AbstractProject project;
     
 	/**
 	 * The sorted list of plots that belong to the same group.
@@ -39,7 +37,7 @@ public class PlotReport {
 	 */
 	private String group;
 	
-	public PlotReport(Project project, String group, Plot[] plots) {
+	public PlotReport(AbstractProject project, String group, Plot[] plots) {
 		Arrays.sort(plots);
 		this.plots = plots;
 		this.group = group;
@@ -47,7 +45,7 @@ public class PlotReport {
 	}
 
 	// called from PlotReport/index.jelly
-    public Project getProject() {
+    public AbstractProject getProject() {
         return project;
     }
 
