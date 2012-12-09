@@ -177,14 +177,10 @@ public class PlotPublisher extends Recorder {
     @Override
     public boolean perform(AbstractBuild<?, ?> build, Launcher launcher,
             BuildListener listener) throws IOException, InterruptedException {
-        // Should always be a Build due to isApplicable below
-        if (!(build instanceof Build)) {
-            return true;
-        }
         listener.getLogger().println("Recording plot data");
         // add the build to each plot
         for (Plot plot : getPlots()) {
-            plot.addBuild((Build) build, listener.getLogger());
+            plot.addBuild(build, listener.getLogger());
         }
         // misconfigured plots will not fail a build so always return true
         return true;

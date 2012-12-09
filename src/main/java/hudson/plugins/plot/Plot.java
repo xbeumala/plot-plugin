@@ -9,7 +9,6 @@ import au.com.bytecode.opencsv.CSVReader;
 import au.com.bytecode.opencsv.CSVWriter;
 import hudson.model.AbstractBuild;
 import hudson.model.AbstractProject;
-import hudson.model.Build;
 import hudson.model.Run;
 import hudson.util.ChartUtil;
 import hudson.util.ShiftedCategoryAxis;
@@ -433,7 +432,7 @@ public class Plot implements Comparable {
      * @param build
      * @param logger
      */
-    public void addBuild(Build build, PrintStream logger) {
+    public void addBuild(AbstractBuild build, PrintStream logger) {
         if (project == null) project = build.getProject();
         
         // load the existing plot data from disk
