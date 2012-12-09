@@ -1,0 +1,5 @@
+<j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form" xmlns:i="jelly:fmt">
+
+<div class="">File Size Trend</div>
+<img src="plot/getPlot?index=0&amp;width=500&amp;height=300" />
+</j:jelly>
