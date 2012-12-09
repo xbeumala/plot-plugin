@@ -8,29 +8,22 @@ import hudson.Extension;
 import hudson.FilePath;
 import hudson.Launcher;
 import hudson.Util;
-import hudson.model.AbstractBuild;
-import hudson.model.AbstractProject;
-import hudson.model.Action;
-import hudson.model.Build;
-import hudson.model.BuildListener;
-import hudson.model.Project;
+import hudson.model.*;
 import hudson.tasks.BuildStepDescriptor;
 import hudson.tasks.BuildStepMonitor;
 import hudson.tasks.Publisher;
 import hudson.tasks.Recorder;
 import hudson.util.FormValidation;
+import net.sf.json.JSONObject;
+import org.kohsuke.stapler.AncestorInPath;
+import org.kohsuke.stapler.QueryParameter;
+import org.kohsuke.stapler.StaplerRequest;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.logging.Logger;
-
-
-import net.sf.json.JSONObject;
-import org.kohsuke.stapler.AncestorInPath;
-import org.kohsuke.stapler.QueryParameter;
-import org.kohsuke.stapler.StaplerRequest;
 
 /**
  * Records the plot data for builds.
@@ -211,7 +204,7 @@ public class PlotPublisher extends Recorder {
 
         @Override
         public boolean isApplicable(Class<? extends AbstractProject> jobType) {
-            return Project.class.isAssignableFrom(jobType);
+            return true;//Project.class.isAssignableFrom(jobType);
         }
 
         /**
